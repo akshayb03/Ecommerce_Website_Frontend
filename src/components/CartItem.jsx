@@ -71,7 +71,13 @@ export const CartItem = ({ item }) => {
         </div>
       </div>
       <div onClick={() => removeCartItems(item)} onKeyDown={() => {}}>
-        <img src={CrossIcon} height={24} width={24} alt="close" />
+        <img
+          src={CrossIcon}
+          height={24}
+          width={24}
+          alt="close"
+          className="cart-cross-icon"
+        />
       </div>
     </div>
   );

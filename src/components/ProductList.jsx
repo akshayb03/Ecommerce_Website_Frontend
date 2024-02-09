@@ -98,6 +98,7 @@ const Product = ({ item }) => {
         height={(width - 160) / 3}
         src={item.img}
         alt={item.name}
+        className="product-grid-image"
         onClick={goToProductDetail}
         onKeyDown={() => {}}
       />

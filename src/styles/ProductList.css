@@ -9,6 +9,7 @@
 .wishlist-cta {
     border: solid 1px black;
     padding:12px;
+    cursor: pointer;
 }
 
 .product-list-desc-container {
@@ -24,4 +25,8 @@
     flex: none;
     align-content: stretch;
     box-sizing: border-box;
+}
+
+.product-grid-image {
+    cursor: pointer;
 }
