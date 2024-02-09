@@ -1,0 +1,29 @@
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 50px 16px 50px;
+}
+
+.nav-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.nav-brand {
+    width: 132px;
+    height:40px
+}
+
+.brand-image {
+    width: 132px;
+    height: 40px;
+}
+
+.nav-item {
+    margin-right:24px;
+    cursor: pointer;
+}

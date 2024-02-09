@@ -1,0 +1,40 @@
+.product-container {
+    display: flex;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 16px;
+}
+
+.product-inner-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.seller-text {
+    font-size: 24px;
+    margin: 0px;
+    font-weight: bold;
+}
+
+.product-name {
+    font-size: 28px;
+    margin: 0px;
+    font-weight: normal;
+}
+
+.separator {
+    width: 100%;
+    height: 1px;
+    background-color: black;
+}
+
+.cta-container {
+    display: flex;
+}
+
+.product-cta {
+    font-size: 16px;
+    width: 280px;
+    height: 50px;
+}

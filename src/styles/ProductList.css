@@ -1,0 +1,27 @@
+.product-list-wrapper {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+}
+
+.wishlist-cta {
+    border: solid 1px black;
+    padding:12px;
+}
+
+.product-list-desc-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.grid-item {
+    margin-bottom: 50px;
+    display: flex;
+    flex: none;
+    align-content: stretch;
+    box-sizing: border-box;
+}
