@@ -47,7 +47,6 @@ export const ProductList = ({ products }) => {
   };
 
   const ItemWrapper = ({ item }) => {
-    console.log("item", item);
     return (
       <div>
         <Product item={item} />
