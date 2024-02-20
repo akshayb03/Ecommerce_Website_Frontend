@@ -14,17 +14,14 @@ export const slice = createSlice({
       state.productList = payload.payload;
     },
     saveToCart: (state, payload) => {
-      console.log("payload", payload.payload);
       const found = state.cartItems.find(
         (item) => item.id === payload.payload.id
       );
-      console.log("found", found);
       if (!found) {
         const newObj = {
           ...payload.payload,
           quantity: 1,
         };
-        console.log("newObj", newObj);
         state.cartItems.push(newObj);
       } else {
         found.quantity += 1;

@@ -15,6 +15,7 @@ export const Home = () => {
       const storedData = productL;
       if (storedData.length === 0) {
         const response = await getProductList();
+        console.log("response.data", response.data);
         setProducts(response.data);
         dispatch(saveProductList(response.data));
       } else {
