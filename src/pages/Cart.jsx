@@ -8,6 +8,7 @@ const uuid = require("uuid");
 
 export const Cart = () => {
   const cartItems = useSelector((state) => state.product.cartItems);
+  console.log("cartItems", cartItems);
   return (
     <div style={{ height: "100vh" }}>
       {!cartItems || cartItems.length === 0 ? (
