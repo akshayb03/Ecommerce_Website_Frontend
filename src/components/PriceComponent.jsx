@@ -1,9 +1,9 @@
 import { EmptyHeight } from "./EmptyHeight";
 
-export const PriceComponent = ({ mrp, discount, style }) => {
+export const PriceComponent = ({ mrp, discount, style, price }) => {
   return (
     <div style={{ display: "flex", alignItems: "center" }}>
-      <strong style={!style ? { fontSize: 24 } : { style }}>₹{mrp}</strong>
+      <strong style={!style ? { fontSize: 24 } : { style }}>₹{price}</strong>
       <EmptyHeight width={8} />
       <span>
         MRP{" "}
@@ -12,7 +12,7 @@ export const PriceComponent = ({ mrp, discount, style }) => {
             textDecoration: "line-through",
           }}
         >
-          {`₹${discount !== 0 && Math.floor(mrp / (1 - discount / 100))}`}
+          {`₹${mrp}`}
         </span>
       </span>
       <EmptyHeight width={8} />

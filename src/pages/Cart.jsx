@@ -1,25 +1,140 @@
 import "../styles/Cart.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
 import { CartItem } from "../components/CartItem";
 import { EmptyHeight } from "../components/EmptyHeight";
 import EmptyCart from "../assets/empty-cart.webp";
 import { useNavigate } from "react-router-dom";
+import { SafeAreaTop } from "../components/SafeAreaTop";
+import { BillingComponent } from "../components/BillingComponent";
+import { displayRazorpay } from "../components/utils";
+import { Modal } from "../components/Modal";
+import { emptyCart } from "../store/product";
+import { createTransaction } from "../api";
 const uuid = require("uuid");
 
 export const Cart = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
   const cartItems = useSelector((state) => state.product.cartItems);
+  const [houseNo, setHouseNo] = useState();
+  const [street, setStreet] = useState();
+  const [landmark, setLandmark] = useState();
+  const [city, setCity] = useState();
+  const [state, setState] = useState();
+  const [pincode, setPincode] = useState();
+
+  const [totalPrice, setTotalPrice] = useState();
+
+  const showSuccess = (data) => {
+    createTransaction(data);
+    navigate("/success");
+    dispatch(emptyCart());
+  };
+
+  const placeOrder = () => {
+    if (houseNo && street && landmark && city && state && pincode) {
+      setIsOpen(false);
+      displayRazorpay(totalPrice, showSuccess, cartItems);
+    }
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  const getTotalPrice = (price) => {
+    setTotalPrice(price);
+  };
+
   return (
     <div style={{ height: "100vh" }}>
       {!cartItems || cartItems.length === 0 ? (
         <EmptyState />
       ) : (
-        <div className="cart-container">
-          <EmptyHeight height={32} />
-          {cartItems.map((item) => {
-            return <CartItem key={uuid.v4()} item={item} />;
-          })}
-        </div>
+        <>
+          <SafeAreaTop />
+          <div className="cart-container">
+            <EmptyHeight height={32} />
+            <div style={{ display: "flex", flexDirection: "row" }}>
+              <div>
+                {cartItems.map((item) => {
+                  return <CartItem key={uuid.v4()} item={item} />;
+                })}
+              </div>
+              <EmptyHeight width={100} />
+              <div
+                style={{ height: "60vh", width: 1, backgroundColor: "black" }}
+              />
+              <EmptyHeight width={100} />
+              <div>
+                <BillingComponent
+                  cartItems={cartItems}
+                  getTotalPrice={getTotalPrice}
+                />
+                <div
+                  className="place-order-cta"
+                  onClick={() => setIsOpen(true)}
+                  onKeyDown={() => {}}
+                >
+                  <strong>{"Place Order"}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
       )}
+      <Modal isOpen={isOpen} onClose={handleClose}>
+        <div style={{ overflow: "scroll" }}>
+          <strong>Delivery Information</strong>
+          <EmptyHeight height={32} />
+          <input
+            className="modal-input"
+            placeholder="House number / Apartment"
+            onChange={(e) => setHouseNo(e.target.value)}
+          />
+          <EmptyHeight height={8} />
+          <input
+            className="modal-input"
+            placeholder="Street Address"
+            onChange={(e) => setStreet(e.target.value)}
+          />
+          <EmptyHeight height={8} />
+          <input
+            className="modal-input"
+            placeholder="Landmark"
+            onChange={(e) => setLandmark(e.target.value)}
+          />
+          <EmptyHeight height={8} />
+          <input
+            className="modal-input"
+            placeholder="City"
+            onChange={(e) => setCity(e.target.value)}
+          />
+          <EmptyHeight height={8} />
+          <input
+            className="modal-input"
+            placeholder="State"
+            onChange={(e) => setState(e.target.value)}
+          />
+          <EmptyHeight height={8} />
+          <input
+            className="modal-input"
+            placeholder="Pincode"
+            onChange={(e) => setPincode(e.target.value)}
+          />
+          <EmptyHeight height={32} />
+          <button
+            type="button"
+            style={{ width: "40%", height: 46 }}
+            onClick={placeOrder}
+            onKeyDown={() => {}}
+          >
+            {"Pay now"}
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 };

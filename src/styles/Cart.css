@@ -1,6 +1,7 @@
 .cart-container {
     padding-left: 50px;
     padding-top: 16px;
+    height:500px
 }
 
 .empty-cart-container {
@@ -9,4 +10,17 @@
     flex-direction:column;
     justify-content: center;
     align-items: center;
+}
+
+.place-order-cta {
+    border: solid 1px black;
+    padding: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-input {
+    width:98%;
+    height:46px
 }

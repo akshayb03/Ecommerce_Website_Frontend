@@ -72,6 +72,7 @@ export const Product = () => {
         <PriceComponent
           mrp={location.state.item.mrp}
           discount={location.state.item.discount}
+          price={location.state.item.price}
         />
         <p>Inclusive of all taxes</p>
         <EmptyHeight height={32} />
