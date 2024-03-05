@@ -50,7 +50,7 @@ export const displayRazorpay = async (totalPrice, showSuccess, cartItems) => {
   }
 
   const result = await axios.post(
-    `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_PORT}/payments/orders`,
+    `${process.env.REACT_APP_BASE_URL}/payments/orders`,
     { amount: totalPrice * 100, receipt: `receipt_${date}` }
   );
 
