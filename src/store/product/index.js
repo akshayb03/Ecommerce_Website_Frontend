@@ -35,6 +35,9 @@ export const slice = createSlice({
         (item) => item.id !== payload.payload.id
       );
     },
+    emptyCart: (state) => {
+      state.cartItems = [];
+    },
     removeFromWishlist: (state, payload) => {
       state.wishlistItems = state.wishlistItems.filter(
         (item) => item.id !== payload.payload.id
@@ -62,6 +65,7 @@ export const {
   saveToCart,
   saveToWishlist,
   removeFromCart,
+  emptyCart,
   removeFromWishlist,
   incrementQuantity,
   decrementQuantity,

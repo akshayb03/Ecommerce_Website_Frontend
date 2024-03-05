@@ -71,6 +71,13 @@ export const SignUp = () => {
         <button className="submit-cta" type="submit" onClick={createAccount}>
           {"Create Account"}
         </button>
+        <button
+          className="submit-cta"
+          type="submit"
+          onClick={() => navigate("/login")}
+        >
+          {"Login"}
+        </button>
       </div>
     </div>
   );

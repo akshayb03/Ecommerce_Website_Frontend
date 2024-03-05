@@ -43,3 +43,13 @@ export const checkAuthorisation = async () => {
     return { auth: false };
   }
 };
+
+export const createTransaction = async (data) => {
+  try {
+    const result = await axios.post(
+      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_PORT}/payments/transactions`,
+      data
+    );
+    return result;
+  } catch (error) {}
+};

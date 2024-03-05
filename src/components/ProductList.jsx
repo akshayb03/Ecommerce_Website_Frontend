@@ -104,7 +104,11 @@ const Product = ({ item }) => {
       <div className="product-list-desc-container">
         <div>
           <span>{item.name}</span>
-          <PriceComponent mrp={item.mrp} discount={item.discount} />
+          <PriceComponent
+            mrp={item.mrp}
+            discount={item.discount}
+            price={item.price}
+          />
         </div>
         <div>
           <div>

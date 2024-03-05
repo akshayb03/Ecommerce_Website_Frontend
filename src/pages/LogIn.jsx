@@ -2,31 +2,33 @@ import "../styles/Login.css";
 import { EmptyHeight } from "../components/EmptyHeight";
 import { useState } from "react";
 import { userLogin } from "../api";
-import { checkAuthorisation } from "../api";
 import { authenticate } from "../store/user";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState(false);
+  const navigate = useNavigate();
+  // const [loginStatus, setLoginStatus] = useState(false);
   const dispatch = useDispatch();
 
-  const checkAuth = async () => {
-    try {
-      const isAuthorised = await checkAuthorisation();
-      console.log("isAuthorised", isAuthorised);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
+  // const checkAuth = async () => {
+  //   try {
+  //     const isAuthorised = await checkAuthorisation();
+  //     console.log("isAuthorised", isAuthorised);
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
 
   const login = async () => {
     try {
       const result = await userLogin(email, password);
       if (result) {
         dispatch(authenticate(true));
-        setLoginStatus(true);
+        // setLoginStatus(true);
+        navigate("/");
       }
     } catch (error) {
       console.log("error", error);
@@ -56,13 +58,20 @@ export const Login = () => {
         <button className="submit-cta" type="submit" onClick={login}>
           {"Login"}
         </button>
-        {loginStatus ? (
+        <button
+          className="submit-cta"
+          type="submit"
+          onClick={() => navigate("/signup")}
+        >
+          {"Create Account"}
+        </button>
+        {/* {loginStatus ? (
           <button className="submit-cta" type="submit" onClick={checkAuth}>
             {"Check Auth"}
           </button>
         ) : (
           <></>
-        )}
+        )} */}
       </div>
     </div>
   );

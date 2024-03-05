@@ -7,6 +7,7 @@ import { Cart } from "./pages/Cart";
 import { Login } from "./pages/LogIn";
 import { SignUp } from "./pages/SignUp";
 import { ProtectedRoute } from "./utils/ProtectedRoute";
+import { Success } from "./pages/Success";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="product" element={<Product />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="cart" element={<Cart />} />
+          <Route path="success" element={<Success />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />

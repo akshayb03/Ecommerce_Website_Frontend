@@ -45,6 +45,7 @@ export const CartItem = ({ item }) => {
             style={{ fontSize: 14 }}
             mrp={item.mrp}
             discount={item.discount}
+            price={item.price}
           />
           <EmptyHeight height={16} />
           <div className="quantity-setter">
