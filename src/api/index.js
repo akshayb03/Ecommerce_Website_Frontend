@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getProductList = async () => {
   const prod = await axios.get(
-    `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_PORT}/api/products`
+    `${process.env.REACT_APP_BASE_URL}/api/products`
   );
   return prod;
 };
@@ -10,7 +10,7 @@ export const getProductList = async () => {
 export const createUser = async (data) => {
   try {
     const createdUser = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_PORT}/api/add-user`,
+      `${process.env.REACT_APP_BASE_URL}/api/add-user`,
       data
     );
     return createdUser;
@@ -22,7 +22,7 @@ export const createUser = async (data) => {
 export const userLogin = async (email, password) => {
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_PORT}/api/login`,
+      `${process.env.REACT_APP_BASE_URL}/api/login`,
       { email: email, password: password }
     );
     return result;
@@ -34,7 +34,7 @@ export const userLogin = async (email, password) => {
 export const checkAuthorisation = async () => {
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_PORT}/api/is-auth`,
+      `${process.env.REACT_APP_BASE_URL}/api/is-auth`,
       {},
       { headers: { "x-access-token": sessionStorage.getItem("authToken") } }
     );
@@ -47,7 +47,7 @@ export const checkAuthorisation = async () => {
 export const createTransaction = async (data) => {
   try {
     const result = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}:${process.env.REACT_APP_PORT}/payments/transactions`,
+      `${process.env.REACT_APP_BASE_URL}/payments/transactions`,
       data
     );
     return result;
